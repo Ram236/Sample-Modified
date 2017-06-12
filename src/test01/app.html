@@ -1,0 +1,18 @@
+<div class="container">
+    <section class="header text-center">
+        <h2>Book an Appointment</h2>
+        <p>Our Investing Topics</p>
+        <h4>Pick a topic, then we'll find a time and place</h4>
+    </section>
+    <div class="margin20tb" ng-class="data.length == 5?'col-xs-6':'col-xs-12'" data-equal-heights>
+        <div class="col-sm-12 col-xs-12 text-center" ng-class="data.length == 5 || data.length == 1?'col-lg-12 col-md-12':'col-lg-6 col-md-6'" ng-repeat="item in data">
+            <button class="btn btn-green" style="height: {{maxHeight}}" ng-class="data.length == 1?'':'btn-block'" ng-bind="formKey(item.text) | translate" buttons="formKey(item.text) | translate">{{item.text}}</button>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center">
+    <span class="text-right">Choose Language:</span>
+    <span class="text-right" ng-click="changeLanguage('en')"><a href="">English</a></span>
+    <span class="text-right" ng-click="changeLanguage('de')"><a href="">Dutch</a></span>
+</footer>
