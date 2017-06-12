@@ -1,62 +1,18 @@
-<div class="home-view">
-    <div class="row">
-        <div class="col-lg-8">
-            <h1 class="text-right">Book an Appointment</h1></div>
-        <div class="col-lg-4 text-right">
-            <span class="text-right">Choose Language:</span>
-            <span class="text-right" ng-click="changeLanguage('en')"><a href="">English</a></span>
-            <span class="text-right" ng-click="changeLanguage('de')"><a href="">Dutch</a></span>
-        </div>
-    </div>
-
-
-    <h4 class="text-center">Our Investment Topics</h4>
-    <br/>
-    <h4 class="text-center">Pick a Topic,then we'll find a time and place</h4>
-
-    <div class="main-content">
-        <div class="container hidden-sm hidden-lg">
-            <div class="row pad10tb" ng-repeat="item in result.Data">
-                <collapse-widget class="btn btn-lg btn-primary btn-block" ng-bind="formKey(item.text) | translate" buttons="formKey(item.text) | translate">
-                </collapse-widget>
-            </div>
-        </div>
-        <div class="container hidden-xs">
-            <div class="row" ng-repeat="item in result.Data" ng-if="result.Data.length == 1">
-                <div class="text-center">
-                    <collapse-widget class="btn btn-lg btn-primary btn-block" ng-bind="formKey(item.text) | translate" buttons="formKey(item.text) | translate">
-                    </collapse-widget>
-                </div>
-
-            </div>
-            <div class="row" ng-repeat="item in result.Data" ng-if="result.Data.length == 5">
-                <div class="col-lg-6">
-                    <collapse-widget class="btn btn-lg btn-primary btn-block" ng-bind="formKey(item.text) | translate" buttons="formKey(item.text) | translate">
-                    </collapse-widget>
-                </div>
-
-            </div>
-            <div ng-repeat="item in result.Data" ng-if="result.Data.length > 5">
-                <div class="row" ng-switch on="$index % 2">
-                    <div ng-switch-when="0">
-                        <div class="col-lg-6">
-                            <collapse-widget id="ing" class="btn btn-lg btn-primary " ng-bind="formKey(result.Data[$index].text) | translate" buttons="formKey(result.Data[$index].text) | translate">
-                            </collapse-widget>
-                        </div>
-                    </div>
-                    <div ng-switch-when="0">
-                        <div ng-show="result.Data[$index +1]">
-                            <div class="col-lg-6">
-                                <collapse-widget class="btn btn-lg btn-primary " ng-bind="formKey(result.Data[$index +1].text) | translate" buttons="formKey(result.Data[$index +1].text) | translate">
-                                </collapse-widget>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
+<div class="container">
+    <section class="header text-center">
+        <h2>Book an Appointment</h2>
+        <p>Our Investing Topics</p>
+        <h4>Pick a topic, then we'll find a time and place</h4>
+    </section>
+    <div class="margin20tb" ng-class="data.length == 5?'col-xs-6':'col-xs-12'" data-equal-heights>
+        <div class="col-sm-12 col-xs-12 text-center" ng-class="data.length == 5 || data.length == 1?'col-lg-12 col-md-12':'col-lg-6 col-md-6'" ng-repeat="item in data">
+            <button class="btn btn-green" style="height: {{maxHeight}}" ng-class="data.length == 1?'':'btn-block'" ng-bind="formKey(item.text) | translate" buttons="formKey(item.text) | translate">{{item.text}}</button>
         </div>
     </div>
 </div>
+
+<footer class="text-center">
+    <span class="text-right">Choose Language:</span>
+    <span class="text-right" ng-click="changeLanguage('en')"><a href="">English</a></span>
+    <span class="text-right" ng-click="changeLanguage('de')"><a href="">Dutch</a></span>
+</footer>
